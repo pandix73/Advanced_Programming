@@ -43,7 +43,7 @@ void clone(int *a, int *b){
 int cmp(int *a, int *b){
     if(a[0] != b[0]) return (a[0] > b[0]) ? 1 : -1;
     int i;
-    for(i = a[0]; i > 0; i++)
+    for(i = a[0]; i > 0; i--)
         if(a[i] != b[i]) return (a[i] > b[i]) ? 1 : -1;
     return 0;
 }
@@ -86,9 +86,7 @@ int sqr(int *a, int *b){
 }
 
 int main(){
-    int a[100] = {3, 1, 2, 1}, b[100] = {0};
-    b[0] = 2;
-    sqr(a, b);
-    print(b);
+    int a[100] = {1, 1}, b[100] = {1,1};
+    printf("%d\n", cmp(a, b));
     return 0;
 }
