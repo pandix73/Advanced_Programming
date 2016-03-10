@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void clean(int *a){
     int i;
@@ -48,15 +49,8 @@ int cmp(int *a, int *b){
     return 0;
 }
 
-void print(int *a){
-    int i;
-    for(i = a[0]; i > 0; i--)
-        printf("%d", a[i]);
-    printf("\n");
-}
-
 int sqr(int *a, int *b){
-    int done[501] = {0}, now;
+    int done[550] = {0}, now;
     done[0] = 1;
     int i;
     for(i = a[0]; i > 0; i-=2){
@@ -69,9 +63,9 @@ int sqr(int *a, int *b){
         addint(done, now);
         int j;
         for(j = 9; j >= 0; j--){
-            int temp[501] = {0};
+            int temp[503] = {0};
             clone(temp, b);
-            mulint(temp, 2);
+            mulint(temp, 20);
             addint(temp, j);
             mulint(temp, j);
             if(cmp(temp, done) <= 0){
@@ -86,7 +80,20 @@ int sqr(int *a, int *b){
 }
 
 int main(){
-    int a[100] = {1, 1}, b[100] = {1,1};
-    printf("%d\n", cmp(a, b));
+    int n;
+    scanf("%d", &n);
+    char input[1010];
+    for(; n > 0; n--){
+        scanf("%s", input);
+        int a[1010], b[503] = {1}, i;
+        a[0] = strlen(input);
+        for(i = a[0]; i > 0; i--)
+            a[i] = input[a[0]-i] - '0';
+        sqr(a, b);
+        for(i = b[0]; i > 0; i--)
+            printf("%d", b[i]);
+        printf("\n");
+        if(n != 1)printf("\n");
+    }
     return 0;
 }
