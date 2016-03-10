@@ -7,6 +7,7 @@ void clean(int *a){
         a[i] %= 10;
         if(i == a[0] && a[i+1] != 0)a[0]++;
     }
+    while(a[a[0]] == 0 && a[0] != 0)a[0]--;
 }
 
 void addint(int *a, int b){
@@ -19,6 +20,18 @@ void mulint(int *a, int b){
     int i;
     for(i = 1; i <= a[0]; i++)
         a[i] *= b;
+    clean(a);
+}
+
+void sub(int *a, int *b){
+    int i;
+    for(i = 1; i <= a[0]; i++){
+        a[i] - b[i];
+        if(a[i] < 0){
+            a[i] += 10;
+            a[i+1] --;
+        }
+    }
     clean(a);
 }
 
@@ -50,9 +63,19 @@ int sqr(int *a, int *b){
         addint(done, now);
 
         int j;
-        for(j = 1; j <= 10; j++){
+        for(j = 9; j >= 0; j++){
             int temp[501];
             clone(temp, b);
+            mulint(temp, 20);
+            addint(temp, j);
+            mulint(temp, j);
+            if(cmp(temp, done) == 0){
+                mulint(b, 10);
+                addint(b, j);
+                sub(done, temp);
+                mulint(done, 100);
+                break;
+            }
         }
     }
 }
