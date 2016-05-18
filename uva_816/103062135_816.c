@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int validway[11][11][4][4]; // 0->N, 1->S, 2->W, 3->E
-//i, j, how come, to
+int validway[11][11][4][4];
 int validpoint[11][11][4];
 
 typedef struct _point{
@@ -13,9 +12,9 @@ typedef struct _point{
     int pre;
 }point;
 
-point q[50000]; // queue
-int qs; // start
-int qe; // end
+point q[50000];
+int qs;
+int qe;
 
 int targeti;
 int targetj;
